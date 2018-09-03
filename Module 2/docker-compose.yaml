@@ -1,0 +1,14 @@
+ version: '3'
+ services:
+   temphistorian:
+     build: 
+       context: ./TemperatureHistorianService
+     ports:
+       - "5000:5000"
+   aggregator:
+     build: 
+       context: ./AggregatorService
+     ports:
+       - "36768:5000"
+     environment: 
+       TEMPHISTORIAN: http://temphistorian:5000
